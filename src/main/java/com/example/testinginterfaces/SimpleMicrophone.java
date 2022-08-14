@@ -3,9 +3,7 @@ package com.example.testinginterfaces;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.ThreadLocalRandom;
-
 import javax.validation.constraints.PositiveOrZero;
-
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -13,8 +11,7 @@ public class SimpleMicrophone implements Microphone {
 
     public static final float DEFAULT_GAIN = 0.0F;
 
-    @Getter
-    private float gain = DEFAULT_GAIN;
+    @Getter private float gain = DEFAULT_GAIN;
 
     private Instant startedAt;
 
@@ -37,7 +34,7 @@ public class SimpleMicrophone implements Microphone {
         checkGainAddition(addition);
 
         gain -= addition;
-        
+
         return gain;
     }
 
@@ -69,5 +66,4 @@ public class SimpleMicrophone implements Microphone {
             throw new IllegalArgumentException("Gain addition must be positive");
         }
     }
-
 }

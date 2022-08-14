@@ -1,10 +1,9 @@
 package com.example.testinginterfaces;
 
+import java.util.Objects;
 import lombok.NonNull;
 import lombok.experimental.Delegate;
 import org.springframework.lang.Nullable;
-
-import java.util.Objects;
 
 public class DynamicMicrophone implements Microphone {
 
@@ -29,6 +28,7 @@ public class DynamicMicrophone implements Microphone {
     }
 
     private interface Overrides {
-        @NonNull Recording stopRecording();
+        @NonNull
+        Recording stopRecording();
     }
 }

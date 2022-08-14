@@ -9,5 +9,4 @@ class DynamicMicrophoneTest implements MicrophoneTest {
     public Microphone createMicrophone() {
         return new DynamicMicrophone();
     }
-
 }

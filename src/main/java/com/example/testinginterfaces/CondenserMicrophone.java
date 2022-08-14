@@ -4,7 +4,5 @@ import lombok.experimental.Delegate;
 
 public class CondenserMicrophone implements Microphone {
 
-    @Delegate
-    private final Microphone simpleMicrophone = new SimpleMicrophone();
-
+    @Delegate private final Microphone simpleMicrophone = new SimpleMicrophone();
 }

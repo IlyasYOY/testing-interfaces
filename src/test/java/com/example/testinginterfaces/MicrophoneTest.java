@@ -34,8 +34,8 @@ public interface MicrophoneTest<T extends Microphone> {
     default void increaseGainByRaisesError() {
         var micro = createMicrophone();
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> micro.increaseGainBy(-1));
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> micro.increaseGainBy(-1));
 
         assertAll(
                 () -> assertEquals("Gain addition must be positive", exception.getMessage()),
@@ -46,8 +46,8 @@ public interface MicrophoneTest<T extends Microphone> {
     default void decreaseGainByRaisesError() {
         var micro = createMicrophone();
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> micro.decreaseGainBy(-1));
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> micro.decreaseGainBy(-1));
 
         assertAll(
                 () -> assertEquals("Gain addition must be positive", exception.getMessage()),
@@ -60,9 +60,7 @@ public interface MicrophoneTest<T extends Microphone> {
 
         float result = assertDoesNotThrow(() -> micro.increaseGainBy(10));
 
-        assertAll(
-                () -> assertEquals(10, result),
-                () -> assertEquals(10, micro.getGain()));
+        assertAll(() -> assertEquals(10, result), () -> assertEquals(10, micro.getGain()));
     }
 
     @Test
@@ -71,9 +69,7 @@ public interface MicrophoneTest<T extends Microphone> {
 
         float result = assertDoesNotThrow(() -> micro.decreaseGainBy(10));
 
-        assertAll(
-                () -> assertEquals(-10, result),
-                () -> assertEquals(-10, micro.getGain()));
+        assertAll(() -> assertEquals(-10, result), () -> assertEquals(-10, micro.getGain()));
     }
 
     @Test
@@ -82,9 +78,7 @@ public interface MicrophoneTest<T extends Microphone> {
 
         float result = assertDoesNotThrow(() -> micro.increaseGainBy(0));
 
-        assertAll(
-                () -> assertEquals(0, result),
-                () -> assertEquals(0, micro.getGain()));
+        assertAll(() -> assertEquals(0, result), () -> assertEquals(0, micro.getGain()));
     }
 
     @Test
@@ -93,16 +87,15 @@ public interface MicrophoneTest<T extends Microphone> {
 
         float result = assertDoesNotThrow(() -> micro.decreaseGainBy(0));
 
-        assertAll(
-                () -> assertEquals(0, result),
-                () -> assertEquals(0, micro.getGain()));
+        assertAll(() -> assertEquals(0, result), () -> assertEquals(0, micro.getGain()));
     }
 
     @Test
     default void stopBeforeStartRaisesException() {
         var micro = createMicrophone();
 
-        IllegalStateException exception = assertThrows(IllegalStateException.class, micro::stopRecording);
+        IllegalStateException exception =
+                assertThrows(IllegalStateException.class, micro::stopRecording);
 
         assertAll(
                 () -> assertNull(exception.getCause()),
@@ -114,7 +107,8 @@ public interface MicrophoneTest<T extends Microphone> {
         var micro = createMicrophone();
 
         micro.startRecording();
-        IllegalStateException exception = assertThrows(IllegalStateException.class, micro::startRecording);
+        IllegalStateException exception =
+                assertThrows(IllegalStateException.class, micro::startRecording);
 
         assertAll(
                 () -> assertNull(exception.getCause()),

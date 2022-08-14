@@ -1,12 +1,13 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.diffplug.spotless" version "6.9.0"
 	id 'java'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
 	compileOnly {
@@ -27,4 +28,13 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+spotless {
+	java {
+		removeUnusedImports()
+		googleJavaFormat("1.15.0")
+			.aosp()
+			.reflowLongStrings()
+	}
 }

@@ -9,5 +9,4 @@ public class CondenserMicrophoneTest implements MicrophoneTest {
     public Microphone createMicrophone() {
         return new CondenserMicrophone();
     }
-    
 }
